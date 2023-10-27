@@ -1,7 +1,12 @@
 [build]
 functions="functions"
 
+[functions]
+external_node_modules = ["express"]
+
+
 [[redirects]]
+force=true
 to="/.netlify/functions/api/:splat"
 from="/*"
 status=200
