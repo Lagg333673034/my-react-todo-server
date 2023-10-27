@@ -5,7 +5,8 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const serverless= require('serverless-http');
 const config = require('config');
-const PORT = config.get('serverPort');
+//const PORT = config.get('serverPort');
+const PORT = 5000;
 const app = express();
 
 app.use(function(req, res, next) {
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(fileUpload());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.use('/',router);
-mongoose.connect(config.get('dbURL'));
+//mongoose.connect(config.get('dbURL'));
+mongoose.connect("mongodb+srv://root:root@cluster0.ejgy5xz.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp");
 
 module.exports.handler = serverless(app);
