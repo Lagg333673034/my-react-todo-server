@@ -1,5 +1,4 @@
 {
-  //"serverPort":5000,
-  "serverPort":8080,
+  "serverPort":5000,
   "dbURL":"mongodb+srv://root:root@cluster0.ejgy5xz.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp"
 }
