@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Yerevan",
+			"country": {
+				"code": "AM",
+				"name": "Armenia"
+			},
+			"subdivision": {
+				"code": "ER",
+				"name": "Yerevan"
+			},
+			"timezone": "Asia/Yerevan",
+			"latitude": 40.1817,
+			"longitude": 44.5099
+		},
+		"timestamp": 1698421596657
+	}
+}
