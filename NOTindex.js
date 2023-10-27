@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
 const router = require('./routes/index');
@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 app.use(express.json());
 app.use(fileUpload());
 app.use(express.static(path.resolve(__dirname, 'static')));
-
+*/
 //app.use(express.static(path.join(__dirname, '../client/build')));
 /*app.get('/', (req, res) => {
     res.send('<h1>Home page</h1>');
@@ -27,7 +27,7 @@ app.use(express.static(path.resolve(__dirname, 'static')));
 /*app.all('*', (req, res) => {
 
 });*/
-
+/*
 app.use('/', router);
 
 const start = async () => {
@@ -41,3 +41,4 @@ const start = async () => {
     }
 };
 start();
+*/
