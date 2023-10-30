@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const taskModel = require('../models/taskModel');
+const subtaskController = require('./subtaskController');
+const commentController = require('./commentController');
+const fileController = require('./fileController');
 
 class TaskController{
     async create(req,res){
@@ -42,15 +45,36 @@ class TaskController{
     async delete(req,res){
         try{
             const {id} = req.params;
-
             if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No task with that ID');
-
+            /*----------------------------------------------------------------------*/
+            //delete children records
+            subtaskController.deleteAll(id);
+            commentController.deleteAll(id);
+            fileController.deleteAll(id);
+            /*----------------------------------------------------------------------*/
             const deleteTask = await taskModel.findByIdAndRemove(id);
-
             return res.json({message: "task was deleted successfully"});
         }catch(e){
             console.log(e);
             res.send({message: "Server ERROR"});
+        }
+    }
+    async deleteAll(projectId){
+        try{
+            const tasks = await taskModel.find({projectId: projectId}).exec();
+            tasks &&
+            tasks.length>0 &&
+            tasks.map(async(task) => {
+                /*----------------------------------------------------------------------*/
+                //delete children records
+                subtaskController.deleteAll(task._id);
+                commentController.deleteAll(task._id);
+                fileController.deleteAll(task._id);
+                /*----------------------------------------------------------------------*/
+                const deleteTask = await taskModel.findByIdAndRemove(task._id);
+            });
+        }catch(e){
+            console.log(e);
         }
     }
     async getAll(req,res){

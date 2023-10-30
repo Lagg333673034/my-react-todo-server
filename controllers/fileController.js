@@ -34,14 +34,37 @@ class FileController{
             const {fileNameUuid} = req.params;
 
             let fullPath = String(path.resolve(__dirname, '..', 'static', fileNameUuid));
-            fs.unlink(fullPath, ()=>{});
+            fs.unlink(fullPath,()=>{});
 
-            await fileModel.findOneAndRemove({ taskId:taskId, fileNameUuid:fileNameUuid });
-            //console.log(fileNameUuid);
+            await fileModel.findOneAndRemove({taskId: taskId, fileNameUuid: fileNameUuid});
+
             return res.json({message: "file was deleted successfully"});
+
+
+
+            if(fileNameUuid && fileNameUuid.length>0) {
+                let fullPath = String(path.resolve(__dirname, '..', 'static', fileNameUuid));
+                fs.unlink(fullPath,()=>{});
+                await fileModel.findOneAndRemove({taskId: taskId, fileNameUuid: fileNameUuid});
+                return res.json({message: "file was deleted successfully"});
+            }
         }catch(e){
             console.log(e);
             res.send({message: "Server ERROR"});
+        }
+    }
+    async deleteAll(taskId){
+        try{
+            const files = await fileModel.find({"taskId":taskId}).exec();
+            files &&
+            files.length>0 &&
+            files.map(async(file) => {
+                let fullPath = String(path.resolve(__dirname, '..', 'static', file.fileNameUuid));
+                fs.unlink(fullPath, ()=>{});
+                const deleteFiles = await fileModel.deleteMany({"_id":file._id});
+            });
+        }catch(e){
+            console.log(e);
         }
     }
     async getAll(req,res){

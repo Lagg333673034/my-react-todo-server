@@ -45,6 +45,13 @@ class SubtaskController{
             res.send({message: "Server ERROR"});
         }
     }
+    async deleteAll(taskId){
+        try{
+            await subtaskModel.deleteMany({"taskId":taskId});
+        }catch(e){
+            console.log(e);
+        }
+    }
     async getAll(req,res){
         let {taskId} = req.params;
         let subtasks = {};

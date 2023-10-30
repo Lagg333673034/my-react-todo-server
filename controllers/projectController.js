@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const projectModel = require('../models/projectModel');
 const taskModel = require("../models/taskModel");
-
+const taskController = require('./taskController');
 
 class ProjectController{
     async create(req,res){
@@ -34,12 +34,12 @@ class ProjectController{
     async delete(req,res){
         try{
             const {id} = req.params;
-
             if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No project with that ID');
-
-            const deleteTasks = await taskModel.deleteMany({"projectId":id});
+            /*----------------------------------------------------------------------*/
+            //delete children records
+            taskController.deleteAll(id);
+            /*----------------------------------------------------------------------*/
             const deleteProject = await projectModel.findByIdAndRemove(id);
-
             return res.json({message: "project was deleted successfully"});
         }catch(e){
             console.log(e);

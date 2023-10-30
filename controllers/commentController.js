@@ -48,6 +48,13 @@ class CommentController{
             res.send({message: "Server ERROR"});
         }
     }
+    async deleteAll(taskId){
+        try{
+            await commentModel.deleteMany({"taskId":taskId});
+        }catch(e){
+            console.log(e);
+        }
+    }
     async getAll(req,res){
         let {taskId} = req.params;
         let {commentId} = req.params;
