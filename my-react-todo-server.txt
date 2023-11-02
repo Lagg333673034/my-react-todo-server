@@ -1,0 +1,4 @@
+//server
+npm install express express-validator express-fileupload mongoose config uuid
+
+https://dashboard.render.com/
