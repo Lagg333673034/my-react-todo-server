@@ -37,10 +37,22 @@ class CommentController{
     async delete(req,res){
         try{
             const {id} = req.params;
-
             if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No comment with that ID');
-
-            const deleteComment = await commentModel.findByIdAndRemove(id);
+            /*-------------------------------------------------------------------------------------------*/
+            let allComments = await commentModel.find().exec();
+            let allSubcomments = [];
+            const showSubComments = (comments,comment_id) => {
+                let temp_comments = comments;
+                return(
+                    temp_comments
+                        .filter(c => c.commentId === comment_id)
+                        .map(c => {allSubcomments.push(String(c._id)), showSubComments(allComments,String(c._id))})
+                )
+            };
+            showSubComments(allComments,id);
+            allSubcomments.map(async(comment_id) => await commentModel.findByIdAndRemove(comment_id));
+            /*-------------------------------------------------------------------------------------------*/
+            const deleteMainComment = await commentModel.findByIdAndRemove(id);
 
             return res.json({message: "comment was deleted successfully"});
         }catch(e){
