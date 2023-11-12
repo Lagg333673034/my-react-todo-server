@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const PORT = config.get('serverPort');
 const app = express();
+const job = require('./cron');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -34,3 +35,4 @@ const start = async () => {
     }
 };
 start();
+job.start();
