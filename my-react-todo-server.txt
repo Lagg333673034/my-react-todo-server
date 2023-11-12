@@ -1,4 +1,5 @@
 //server
-npm install express express-validator express-fileupload mongoose config uuid
+npm install express express-validator express-fileupload 
+mongoose config uuid cron
 
 https://dashboard.render.com/
