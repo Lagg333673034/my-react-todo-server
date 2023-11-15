@@ -4,12 +4,14 @@ const https = require('https');
 //'* */1 * * * *'  //every seconds
 //'*/1 * * * *'  //every minutes
 //'*/14 * * * *'  //every minutes
-const url = "https://www.google.ru";
-const job = new cron.CronJob('*/1 * * * *', function(){
+
+const job = new cron.CronJob('*/14 * * * *', function(){
     console.log('not sleep');
 
+
+    const url = "https://www.google.ru";
     https
-        .get("https://www.google.ru",(res)=>{
+        .get(url,(res)=>{
             if(res.statusCode === 200) {
                 console.log('ok :)');
             }else{
@@ -20,9 +22,9 @@ const job = new cron.CronJob('*/1 * * * *', function(){
             console.error('error');
         });
 
-    //const url = "https://www.google.ru";
-    //const url = "https://ru.wikipedia.org/wiki/Список_серий_аниме_One_Piece";
-    /*https
+
+    /*const url = "https://ru.wikipedia.org/wiki/Список_серий_аниме_One_Piece";
+    https
         .get(url,(res)=>{
             let data = '';
             res.on('data',(chank) => {
