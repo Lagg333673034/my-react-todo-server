@@ -5,7 +5,7 @@ const https = require('https');
 //'*/1 * * * *'  //every minutes
 //'*/14 * * * *'  //every minutes
 
-const job = new cron.CronJob('*/1 * * * *', function(){
+const job = new cron.CronJob('*/14 * * * *', function(){
     console.log('not sleep');
 
     const url = "https://todo-server-rijd.onrender.com/api/project";
