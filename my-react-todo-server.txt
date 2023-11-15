@@ -3,3 +3,14 @@ npm install express express-validator express-fileupload
 mongoose config uuid cron
 
 https://dashboard.render.com/
+
+
+Build & Deploy
+
+Build Command
+npm install express express-validator express-fileupload mongoose config uuid cron
+
+Start Command
+node index.js
+
+
