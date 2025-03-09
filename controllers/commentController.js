@@ -91,7 +91,7 @@ class CommentController{
         let {commentId} = req.params;
         let {id} = req.params;
 
-        let comments = await commentModel.find({
+        let comment = await commentModel.find({
             taskId: (taskId && typeof taskId === "string" && taskId.length > 5) ? taskId : '',
             commentId: (commentId && typeof commentId === "string" && commentId.length > 5) ? commentId : "",
             _id: (id && typeof id === "string" && id.length > 5) ? id : "",

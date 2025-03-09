@@ -1,6 +1,14 @@
 //server
-npm install express express-validator express-fileupload 
-mongoose config uuid cron
+npm install express
+npm install express-validator
+npm install express-fileupload
+npm install mongoose
+npm install config
+npm install uuid
+npm install cron
+npm install nodemon --save-dev  //chtob server perezapyskalsa pri lybih izmeneniyah
+
+
 
 https://dashboard.render.com/
 
@@ -13,4 +21,33 @@ npm install express express-validator express-fileupload mongoose config uuid cr
 Start Command
 node index.js
 
+npm i cookie-parser
 
+npm i cors
+
+
+
+Система "Планировщик задач"
+Клиентская часть (React.js)
+    npx	create-react-app .
+    npm install	react-router-dom
+    react-redux
+    redux
+    redux-thunk
+    axios
+    moment
+    react-beautiful-dnd
+    @mui/material
+    @mui/icons-material
+    @emotion/react
+    @emotion/styled
+Залит на https://www.netlify.com/
+
+Серверная часть (Node.js)
+    npm install	express
+    express-validator
+    express-fileupload
+    mongoose
+    config
+    uuid
+Залит на https://dashboard.render.com/
