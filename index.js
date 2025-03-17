@@ -16,12 +16,12 @@ const cookieParser = require('cookie-parser');
 const job = require('./cron');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
-const cors = require('cors');
+/*const cors = require('cors');
 app.use(cors({
     credentials: true,
     //origin: "http://localhost:3000"
     origin: `http://${HOST}:3000`
-}));
+}));*/
 
 app.use(function(req, res, next) {
     //res.header("Access-Control-Allow-Origin", "*"); // * -- zvezdochky nelza pisat, eto v oshibke v brayzere napisano, vidimo brayzer ne razreshaet
@@ -33,11 +33,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-/*app.use(function(req, res,  next) {
+app.use(function(req, res,  next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-});*/
+});
 
 
 app.use(express.json());
