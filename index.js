@@ -16,14 +16,14 @@ const cookieParser = require('cookie-parser');
 const job = require('./cron');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
-/*const cors = require('cors');
+const cors = require('cors');
 app.use(cors({
     credentials: true,
     //origin: "http://localhost:3000"
     origin: `http://${HOST}:3000`
-}));*/
+}));
 
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     //res.header("Access-Control-Allow-Origin", "*"); // * -- zvezdochky nelza pisat, eto v oshibke v brayzere napisano, vidimo brayzer ne razreshaet
     res.header("Access-Control-Allow-Origin: http://localhost:3000");
     //res.header("Access-Control-Allow-Origin: http://localhost:5000");
@@ -31,13 +31,13 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, Content-Type, Accept");
     //res.header("Access-Control-Allow-Headers: *");
     next();
-});
+});*/
 
-app.use(function(req, res,  next) {
+/*app.use(function(req, res,  next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-});
+});*/
 
 
 app.use(express.json());
