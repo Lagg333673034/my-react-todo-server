@@ -2,8 +2,12 @@
 const jwt = require('jsonwebtoken');
 const tokenModel = require('../models/tokenModel');
 const config = require('config');
-const JWT_ACCESS_SECRET_KEY = config.get('JWT_ACCESS_SECRET_KEY');
-const JWT_REFRESH_SECRET_KEY = config.get('JWT_REFRESH_SECRET_KEY');
+//const JWT_ACCESS_SECRET_KEY = config.get('JWT_ACCESS_SECRET_KEY');
+//const JWT_REFRESH_SECRET_KEY = config.get('JWT_REFRESH_SECRET_KEY');
+const JWT_ACCESS_SECRET_KEY = process.env.JWT_ACCESS_SECRET_KEY;
+const JWT_REFRESH_SECRET_KEY = process.env.JWT_REFRESH_SECRET_KEY;
+
+
 
 
 class TokenService {
