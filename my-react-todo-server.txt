@@ -48,10 +48,25 @@ npm i cors
     express-validator
     express-fileupload
     mongoose
-    config
+    //config
     uuid
 
 dotenv
 
 
 Залит на https://dashboard.render.com/
+
+
+
+
+
+//server
+npm init -y  //dla defoltnih nastroek
+npm i express cors cookie-parser
+npm i nodemon --save-dev  //chtob server perezapyskalsa pri lybih izmeneniyah
+npm i dotenv
+npm i sequelize pg
+npm i jsonwebtoken bcrypt
+npm i nodemailer
+npm i express-validator
+npm i uuid

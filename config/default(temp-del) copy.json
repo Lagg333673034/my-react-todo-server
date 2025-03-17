@@ -1,6 +1,0 @@
-{
-  "JWT_ACCESS_SECRET_KEY":"nb__ueghfuygwe_f24h34hyweg",
-  "JWT_REFRESH_SECRET_KEY":"nbquegh___g9whghh39h_g3h3g",
-  "serverPort":5000,
-  "dbURL":"mongodb://root:root@ac-956p7zc-shard-00-00.ejgy5xz.mongodb.net:27017,ac-956p7zc-shard-00-01.ejgy5xz.mongodb.net:27017,ac-956p7zc-shard-00-02.ejgy5xz.mongodb.net:27017/?ssl=true&replicaSet=atlas-13di8u-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0"
-}
