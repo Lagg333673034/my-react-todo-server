@@ -35,5 +35,10 @@
     "url": "https://github.com/Lagg333673034/my-react-todo-server/issues"
   },
   "homepage": "https://github.com/Lagg333673034/my-react-todo-server#readme",
-  "description": ""
+  "description": "",
+
+  "engines": {
+    "node": "22.12.0"
+  }
+
 }
