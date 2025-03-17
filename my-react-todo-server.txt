@@ -50,4 +50,8 @@ npm i cors
     mongoose
     config
     uuid
+
+dotenv
+
+
 Залит на https://dashboard.render.com/
