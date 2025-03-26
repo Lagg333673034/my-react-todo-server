@@ -12,3 +12,17 @@ env
 .env
 .env*.local
 !.env.example
+
+
+
+
+
+node_modules/
+**/*node_modules
+
+.env.development
+.env.production
+**/*.env.development
+
+*.log
+npm-debug.log*
