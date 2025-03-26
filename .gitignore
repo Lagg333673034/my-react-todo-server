@@ -7,3 +7,8 @@ env
 
 /node_modules
 /vars
+
+
+.env
+.env*.local
+!.env.example
