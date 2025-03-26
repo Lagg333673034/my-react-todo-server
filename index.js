@@ -11,26 +11,38 @@ const SERVER_PORT = process.env.SERVER_PORT;
 const DB_URL = process.env.DB_URL;
 const CLIENT_HOST = process.env.CLIENT_HOST;
 
+
+
 const app = express();
 const cookieParser = require('cookie-parser');
 const job = require('./cron');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 
-/*const cors = require('cors');
-app.use(cors({
+const cors = require('cors');
+/*app.use(cors({
     credentials: true,
     //origin: "http://localhost:3000"
     origin: `http://${HOST}:3000`
 }));*/
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://'+CLIENT_HOST);
+
+const corsOptions = {
+    optionsSuccessStatus: 200, // For legacy browser support
+    credentials: true, // This is important.
+    origin: "https://silver-cucurucho-d41282.netlify.app",
+};
+app.use(cors(corsOptions));
+
+
+/*app.use((req, res, next) => {
     res.header('Access-Control-Allow-Credentials', 'true');
+    //res.header('Access-Control-Allow-Origin', 'http://'+CLIENT_HOST);
+    res.header('Access-Control-Allow-Origin', 'http://silver-cucurucho-d41282.netlify.app');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
-});
+});*/
 
 
 
