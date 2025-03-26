@@ -5,8 +5,7 @@ const {body} = require('express-validator');
 const AUTH_ROUTE = '/auth';
 
 
-router.post(
-    `${AUTH_ROUTE}/registration`,
+router.post(`${AUTH_ROUTE}/registration`,
     //body('email').isEmail(),
     body('password').isLength({min: 3, max: 32}),
     authController.registration

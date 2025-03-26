@@ -102,6 +102,8 @@ class UserController{
     async getAll(req,res){
         const users = await userModel.find();
         return res.json(users);
+
+        //return res.json({message: "testttt"});
     }
     async getOne(req,res){
         let {userId} = req.params;

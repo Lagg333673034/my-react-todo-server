@@ -9,35 +9,31 @@ const path = require('path');
 //const PORT = config.get('serverPort');
 const SERVER_PORT = process.env.SERVER_PORT;
 const DB_URL = process.env.DB_URL;
-const HOST = process.env.HOST;
+const CLIENT_HOST = process.env.CLIENT_HOST;
 
 const app = express();
 const cookieParser = require('cookie-parser');
 const job = require('./cron');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
-const cors = require('cors');
+
+
+/*const cors = require('cors');
 app.use(cors({
     credentials: true,
     //origin: "http://localhost:3000"
     origin: `http://${HOST}:3000`
-}));
+}));*/
 
-/*app.use(function(req, res, next) {
-    //res.header("Access-Control-Allow-Origin", "*"); // * -- zvezdochky nelza pisat, eto v oshibke v brayzere napisano, vidimo brayzer ne razreshaet
-    res.header("Access-Control-Allow-Origin: http://localhost:3000");
-    //res.header("Access-Control-Allow-Origin: http://localhost:5000");
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, Content-Type, Accept");
-    //res.header("Access-Control-Allow-Headers: *");
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://'+CLIENT_HOST);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
-});*/
+});
 
-/*app.use(function(req, res,  next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});*/
+
 
 
 app.use(express.json());

@@ -56,7 +56,7 @@ dotenv
 
 Залит на https://dashboard.render.com/
 
-
+> npm run dev
 
 
 
