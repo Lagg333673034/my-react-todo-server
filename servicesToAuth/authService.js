@@ -109,13 +109,8 @@ class UserService {
             upsert: false,
         });
 
-        //let CLIENT_PORT = "";
-        //if(process.env.CLIENT_PORT != "") CLIENT_PORT = ":"+process.env.CLIENT_PORT;
-        //const link = process.env.HOST+`/recover-password/`+randomUuid;
-
         await mailService.sendUserRecoverPasswordMail(email,`${process.env.CLIENT_HOST}/recover-password/${randomUuid}`);
-        //await mailService.sendUserRecoverPasswordMail(email,link);
-
+        
         return email;
     }
 
