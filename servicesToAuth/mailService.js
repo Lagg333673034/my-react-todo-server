@@ -19,16 +19,16 @@ class MailService {
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to: to,
-            subject: `FFFFСоздание пользователья на ${process.env.API_URL}`,
+            subject: `Создание пользователья на ${process.env.CLIENT_HOST}`,
             text: '',
-            html: `<div><h1>Пользователь с почтовым адресом ${to} создан на resyrse ${process.env.API_URL}.</h1></div>`
+            html: `<div><h1>Пользователь с почтовым адресом ${to} создан на ${process.env.CLIENT_HOST}.</h1></div>`
         })
     }
     async sendUserRecoverPasswordMail(to,randomUuid){
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to: to,
-            subject: 'Восстановление пароля на ' + process.env.API_URL,
+            subject: 'Восстановление пароля на ' + process.env.CLIENT_HOST,
             text: '',
             html: `<div>Для восстановления пароля для Email ${to} пройдите по указанной ссылке <a href="${randomUuid}">${randomUuid}</a></div>`
             //html: `<div>Для восстановления пароля для Email ${to} пройдите по указанной ссылке <a href="localhost:3000/recover-password/d1f3f5dc-b7df-40ce-b26d-d550c4e84c9f">${randomUuid}</a></div>`
