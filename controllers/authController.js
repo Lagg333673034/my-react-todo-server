@@ -6,6 +6,7 @@ class AuthController{
     async registration(req,res,next){
         try{
             const errors = validationResult(req);
+            //console.log(errors.errors[0].msg); // good
             if(!errors.isEmpty()){
                 return next(ApiError.BadRequest('Ошибка при валидации', errors.array()));
             }
