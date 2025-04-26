@@ -24,8 +24,8 @@ const cors = require('cors');
 const corsOptions = {
     optionsSuccessStatus: 200, // For legacy browser support
     credentials: true, // This is important.
-    //origin: "https://silver-cucurucho-d41282.netlify.app",
-    origin: "http://localhost:3000",
+    origin: "https://silver-cucurucho-d41282.netlify.app",
+    //origin: "http://localhost:3000",
 };
 app.use(cors(corsOptions));
 
