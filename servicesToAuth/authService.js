@@ -23,7 +23,7 @@ class UserService {
             role: role,
         });
 
-        await mailService.sendUserCreateMail(email);
+        //await mailService.sendUserCreateMail(email);
 
         const userView1 = new UserView1(user); //email, id
         const tokens = tokenService.generateTokens({...userView1});
@@ -66,20 +66,13 @@ class UserService {
         }
 
         const userData = tokenService.validateRefreshToken(refreshToken);
-        //return {userData: userData};
-
         const tokenFromDB = await tokenService.findToken(refreshToken);
-        //return {tokenFromDB: tokenFromDB};
-
         if(!userData || !tokenFromDB){
             throw ApiError.UnauthorizedError();
         }
 
         const user = await userModel.find({_id:userData.id}).exec();
-        //return {user: user};
-
         const userView1 = new UserView1(user[0]);
-        //return {user: userView1};
         
         const tokens = tokenService.generateTokens({...userView1});
         await tokenService.saveToken(userView1.id,tokens.refreshToken);
@@ -109,7 +102,7 @@ class UserService {
             upsert: false,
         });
 
-        await mailService.sendUserRecoverPasswordMail(email,`${process.env.CLIENT_HOST}/recover-password/${randomUuid}`);
+        await mailService.sendUserRecoverPasswordMail(email,randomUuid);
         
         return email;
     }

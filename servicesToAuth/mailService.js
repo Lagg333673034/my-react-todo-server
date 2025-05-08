@@ -15,7 +15,6 @@ class MailService {
         })
     }
     async sendUserCreateMail(to){
-        //console.log("=="+process.env.SMTP_HOST+"=="+process.env.SMTP_USER+"=="+process.env.SMTP_USER_PASSWORD+"=="+process.env.API_URL);
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to: to,
@@ -25,13 +24,19 @@ class MailService {
         })
     }
     async sendUserRecoverPasswordMail(to,randomUuid){
+        const link = `${process.env.CLIENT_HOST}/recover-password/${randomUuid}`;
+        const html = 
+        '<div>For recover password click to link below and input your new password.</div>'+
+        '<a href="'+link+'" target="_blank">'+link+'</a>'+
+        '';
+
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to: to,
             subject: 'Восстановление пароля на ' + process.env.CLIENT_HOST,
             text: '',
-            html: `<div>Для восстановления пароля для Email ${to} пройдите по указанной ссылке <a href="${randomUuid}">${randomUuid}</a></div>`
-            //html: `<div>Для восстановления пароля для Email ${to} пройдите по указанной ссылке <a href="localhost:3000/recover-password/d1f3f5dc-b7df-40ce-b26d-d550c4e84c9f">${randomUuid}</a></div>`
+            html: html
+            //html: `<div>Для восстановления пароля для Email ${to} пройдите по указанной ссылке <a href="${randomUuid}">${randomUuid}</a></div>`
             
         })
     }

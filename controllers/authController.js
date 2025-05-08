@@ -38,14 +38,15 @@ class AuthController{
     }
     async logout(req,res,next){
         try{
-            //return res.json("123");
-            //return res.json(req.cookies);
             const {refreshToken} = req.cookies;
-            //return res.json(refreshToken);
+            //console.log(req.cookies);
+            //console.log(refreshToken);
+
 
             const token = await authService.logout(refreshToken);
             res.clearCookie('refreshToken');
-            return res.json(token);
+            //return res.json(token);
+            return res.json({done:"done"}); 
         }catch (e){
             next(e);
         }
@@ -56,6 +57,10 @@ class AuthController{
     async refresh(req,res,next){
         try{
             const {refreshToken} = req.cookies;
+            //console.log(req.cookies);
+            console.log(refreshToken);
+
+
             const userData = await authService.refresh(refreshToken);
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
             return res.json(userData);

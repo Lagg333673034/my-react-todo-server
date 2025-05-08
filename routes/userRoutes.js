@@ -7,7 +7,7 @@ const USERS_ROUTE = '/user';
 router.post(`${USERS_ROUTE}`, authMiddleware, userController.create);
 router.patch(`${USERS_ROUTE}/:id`, authMiddleware, userController.update);
 router.delete(`${USERS_ROUTE}/:id`, authMiddleware, userController.delete);
-router.get(`${USERS_ROUTE}`, /*authMiddleware,*/ userController.getAll); // potom sdelat kak bilo :)
+router.get(`${USERS_ROUTE}`, authMiddleware, userController.getAll);
 router.get(`${USERS_ROUTE}/:userId`, authMiddleware, userController.getOne);
 
 
