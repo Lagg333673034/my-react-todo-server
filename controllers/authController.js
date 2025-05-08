@@ -18,6 +18,7 @@ class AuthController{
                 httpOnly: true, 
                 secure: true, 
                 sameSite: 'none',
+                Partitioned: true,
             });
             return res.json(userData);
         }catch (e){
@@ -36,6 +37,7 @@ class AuthController{
                     httpOnly: true, 
                     secure: true, 
                     sameSite: 'none',
+                    Partitioned: true,
                 });
                 return res.json(userData);
             }else{
@@ -77,6 +79,7 @@ class AuthController{
                 httpOnly: true, 
                 secure: true, 
                 sameSite: 'none',
+                Partitioned: true,
             });
             return res.json(userData);
         }catch (e){
@@ -105,6 +108,7 @@ class AuthController{
                 httpOnly: true, 
                 secure: true, 
                 sameSite: 'none',
+                Partitioned: true,
             });
             return res.json(userData);
         }catch (e){
