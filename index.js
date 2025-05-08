@@ -18,9 +18,9 @@ const job = require('./cron');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 
+
+/*
 const cors = require('cors');
-
-
 const corsOptions = {
     optionsSuccessStatus: 200, // For legacy browser support
     credentials: true, // This is important.
@@ -28,6 +28,23 @@ const corsOptions = {
     //origin: "http://localhost:3000",
 };
 app.use(cors(corsOptions));
+*/
+
+//v2
+app.use(function(req, res, next) {
+    const allowedOrigins = ['https://silver-cucurucho-d41282.netlify.app','http://localhost:3000'];
+
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+         res.setHeader('Access-Control-Allow-Origin', origin);
+         res.setHeader("Cross-Origin-Opener-Policy", origin);
+    }
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE, PATCH");
+    next();
+});
+
 
 
 
