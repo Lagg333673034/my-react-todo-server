@@ -13,7 +13,12 @@ class AuthController{
 
             const {email,password} = req.body;
             const userData = await authService.registration(email,password);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
+            res.cookie('refreshToken', userData.refreshToken, {
+                maxAge: 30*24*60*60*1000, 
+                httpOnly: true, 
+                secure: true, 
+                sameSite: none,
+            });
             return res.json(userData);
         }catch (e){
             next(e);
@@ -26,7 +31,12 @@ class AuthController{
             
             const userData = await authService.login(email,password);
             if(userData && userData.refreshToken && userData.refreshToken != "undefined"){
-                res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
+                res.cookie('refreshToken', userData.refreshToken, {
+                    maxAge: 30*24*60*60*1000, 
+                    httpOnly: true, 
+                    secure: true, 
+                    sameSite: none,
+                });
                 return res.json(userData);
             }else{
                 return res.json(null);
@@ -62,7 +72,12 @@ class AuthController{
 
 
             const userData = await authService.refresh(refreshToken);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
+            res.cookie('refreshToken', userData.refreshToken, {
+                maxAge: 30*24*60*60*1000, 
+                httpOnly: true, 
+                secure: true, 
+                sameSite: none,
+            });
             return res.json(userData);
         }catch (e){
             next(e);
@@ -85,7 +100,12 @@ class AuthController{
         try{
             const {randomUuid,password} = req.body;
             const userData = await authService.recoverPassword(randomUuid,password);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
+            res.cookie('refreshToken', userData.refreshToken, {
+                maxAge: 30*24*60*60*1000, 
+                httpOnly: true, 
+                secure: true, 
+                sameSite: none,
+            });
             return res.json(userData);
         }catch (e){
             next(e);
