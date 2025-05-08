@@ -17,7 +17,7 @@ class AuthController{
                 maxAge: 30*24*60*60*1000, 
                 httpOnly: true, 
                 secure: true, 
-                sameSite: none,
+                sameSite: 'none',
             });
             return res.json(userData);
         }catch (e){
@@ -35,7 +35,7 @@ class AuthController{
                     maxAge: 30*24*60*60*1000, 
                     httpOnly: true, 
                     secure: true, 
-                    sameSite: none,
+                    sameSite: 'none',
                 });
                 return res.json(userData);
             }else{
@@ -68,7 +68,7 @@ class AuthController{
         try{
             const {refreshToken} = req.cookies;
             //console.log(req.cookies);
-            console.log(refreshToken);
+            //console.log(refreshToken);
 
 
             const userData = await authService.refresh(refreshToken);
@@ -76,7 +76,7 @@ class AuthController{
                 maxAge: 30*24*60*60*1000, 
                 httpOnly: true, 
                 secure: true, 
-                sameSite: none,
+                sameSite: 'none',
             });
             return res.json(userData);
         }catch (e){
@@ -104,7 +104,7 @@ class AuthController{
                 maxAge: 30*24*60*60*1000, 
                 httpOnly: true, 
                 secure: true, 
-                sameSite: none,
+                sameSite: 'none',
             });
             return res.json(userData);
         }catch (e){

@@ -20,8 +20,8 @@ module.exports = function (req, res, next){
 
         req.user = userData;
         
-        console.log("req.cookies==")
-        console.log(req.cookies)
+        //console.log("req.cookies==")
+        //console.log(req.cookies)
 
 
         next();
