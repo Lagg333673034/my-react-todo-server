@@ -32,7 +32,8 @@ app.use(cors(corsOptions));
 
 //v2
 app.use(function(req, res, next) {
-    const allowedOrigins = ['https://silver-cucurucho-d41282.netlify.app','http://localhost:3000'];
+    //const allowedOrigins = ['http://localhost:3000'];
+    const allowedOrigins = ['https://silver-cucurucho-d41282.netlify.app'];
 
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
